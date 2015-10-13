@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height"/>
+		
+		<title>Test</title>
+
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/bout.css" />
+		<link rel="stylesheet" type="text/css" href="css/angular-virtual-keyboard.css" />
+
+		<!-- Ionicons -->
+		<link rel="stylesheet" type="text/css" href="lib/font_awesome/css/font-awesome.min.css" />
+        
+		
+		<!-- Angular -->
+		<script src="js/angular.min.js"></script>
+		<script src="js/ui-bootstrap-tpls-0.12.1.min.js"></script>
+        <script src="js/angular-ui-router.js"></script>
+		<script src="js/angular-virtual-keyboard.js"></script>
+        <script src="js/angular-useragent-parser.min.js"></script> 
+
+
+
+        <!-- Nouveau Virtual Keyboard -->
+		<script src="lib/vk_best/js_src/jquery.min.js"></script>
+		<script src="lib/vk_best/js_src/jquery-ui.min.js"></script>
+
+		<!-- keyboard -->
+		<link href="lib/vk_best/keyboard/css/keyboard.css" rel="stylesheet">
+		<script src="lib/vk_best/keyboard/js/jquery.keyboard.min.js"></script>
+		<script src="lib/vk_best/keyboard/layouts/keyboard-layouts-combined.min.js"></script>
+		<script src="lib/vk_best/keyboard/layouts/keyboard-layouts-greywyvern.min.js"></script>
+		<script src="lib/vk_best/keyboard/layouts/french.min.js"></script>
+
+		<!-- keyboard extensions (optional) -->
+		<script src="lib/vk_best/keyboard/js/jquery.mousewheel.min.js"></script>
+		<script src="lib/vk_best/keyboard/js/jquery.keyboard.extension-typing.min.js"></script>
+		<script src="lib/vk_best/keyboard/js/jquery.keyboard.extension-autocomplete.min.js"></script>
+
+		<script src="lib/vk_best/ng-virtual-keyboard.js"></script>
+		<!-- Fin Nouveau Virtual Keyboard -->
+
+
+
+		<script src="js/app.js"></script>
+		<script src="js/controllers.js"></script>
+
+	</head>
+	
+	<body ng-app="test_app">
+		<div id="content" ui-view></div>
+	</body>
+
+</html>

@@ -1,0 +1,58 @@
+<form name="creaForm" id="creaForm" ng-submit="doUpd()" class="form-horizontal" role="form">
+
+	
+	<div class="col-xs-12">
+		</br>
+		</br>
+	</div>
+
+	<!-- div gauche -->
+	<div class="col-xs-6">
+
+
+		<!-- Prix TTC (défaut) / HT -->
+		<div class="form-group">
+			<label for="input_prix" class="col-xs-5 control-label">
+				<span ng-if="formUpdate.type_prix == 'ttc'">Prix TTC </span>
+				<span ng-if="formUpdate.type_prix == 'ht'">Prix HT </span>
+				<span class="myred">*</span></label>
+			<div class="col-xs-4">
+				<input ng-model="formUpdate.input_prix" id="input_prix" class="form-control keyboard_fix_input" type="number" step="0.01" value="" name="input_prix" required>
+			</div>
+			<!-- <div class="col-xs-1"><span class="ouvrir_clavier" for="input_prix"><img src="img/keyboard.png"></img></span></div> -->
+			<div ng-if="formUpdate.input_prix != 0" class="col-xs-3" id="prixcalcul">
+				<span ng-if="formUpdate.type_prix == 'ttc'">({{ (formUpdate.input_prix / (1 + formUpdate.input_tva) )}}€ HT)</span>
+				<span ng-if="formUpdate.type_prix == 'ht'">({{ (formUpdate.input_prix + (formUpdate.input_prix * formUpdate.input_tva))}}€ TTC)</span>
+			</div>
+		</div>
+
+
+	</div>
+	<!-- fin div gauche -->
+
+
+
+	<!-- div droite -->
+	<div class="col-xs-6">
+
+		<!-- Stock -->
+		<div class="form-group">
+			<label for="input_stock" class="col-xs-5 control-label">Stock <span class="myred">*</span></label>
+			<div class="col-xs-3">
+				<input ng-model="formUpdate.input_stock" id="input_stock" class="form-control keyboard_fix_input" type="number" name="input_stock" required>
+			</div>
+			<!-- <div class="col-xs-1"><span class="ouvrir_clavier" for="input_stock"><img src="img/keyboard.png"></img></span></div> -->
+		</div>
+
+	
+
+	</div>
+	<!-- fin div droite -->
+
+	<div class="col-xs-12 text-center">
+		<button ng-disabled="creaForm.$invalid" id="save_stock" type="submit" class="btn btn-primary btn-sm">Submit the form</button>
+	</div>
+
+
+
+</form>

@@ -1,0 +1,87 @@
+<p class="lead">All these issues must be tested on Android 4.2, the behaviours on Safari, Chrome or Firefox are different from Android app.</p>
+
+
+<legend>Issue 1</legend>
+<p><strong>Test to do:</strong> Open-up the virtual keyboard by clicking the button on next to the input.</p>
+<p><strong>The problem is:</strong> when the value is initialized the cursor is set at the beginning of the value, it must be at the end. ex: abcd1234| (where "|" is the curser of the virtual keyboard)</p>
+
+<form ng-submit="doRecup()" name="caisseForm" id="caisseForm" class="form-signin" role="form">
+	
+	<div class="col-sm-8 text-right">
+		<input ng-virtual-keyboard="{layout: 'alpha'}" id="ean" ng-model="formrecup.ean" ng-keyup="$event.keyCode == 13 && doRecup()" name="ean" class="form-control keyboard_fix_input" type="text" autocomplete="off" placeholder="Scannez un code-barre ou recherchez un produit..." autofocus>
+	</div>
+
+	<div class="col-sm-1 text-left">
+		<span ng-click="onKeyboardClick('ean')" class="ouvrir_clavier" for="input_stock"><img src="img/keyboard.png"></img></span>
+	</div>
+
+</form>
+
+</br>
+</br>
+
+<legend>Issue 2</legend>
+<p><strong>Test to do:</strong> Input some values and submit the form by pushing "Enter" button of the virtual keyboard</p>
+<p><strong>The problem is:</strong> The "Enter" button does not submit the form.</p>
+
+<form name="creaForm" id="creaForm" ng-submit="doUpd()" class="form-horizontal" role="form">
+
+	<!-- div gauche -->
+	<div class="col-xs-6">
+
+
+		<!-- Prix TTC (défaut) / HT -->
+		<div class="form-group">
+			<label for="input_prix" class="col-xs-5 control-label">
+				<span ng-if="formUpdate.type_prix == 'ttc'">Prix TTC </span>
+				<span ng-if="formUpdate.type_prix == 'ht'">Prix HT </span>
+				<span class="myred">*</span></label>
+			<div class="col-xs-4">
+				<input ng-virtual-keyboard="{layout: 'alpha'}" ng-model="formUpdate.input_prix" id="input_prix" class="form-control keyboard_fix_input" type="number" step="0.01" value="" name="input_prix" required>
+			</div>
+
+			<div class="col-xs-1"><span ng-click="onKeyboardClick('input_prix')" class="ouvrir_clavier" for="input_stock"><img src="img/keyboard.png"></img></span></div>
+			
+			<div ng-if="formUpdate.input_prix != 0" class="col-xs-3" id="prixcalcul">
+				<span ng-if="formUpdate.type_prix == 'ttc'">({{ (formUpdate.input_prix / (1 + formUpdate.input_tva) )}}€ HT)</span>
+				<span ng-if="formUpdate.type_prix == 'ht'">({{ (formUpdate.input_prix + (formUpdate.input_prix * formUpdate.input_tva))}}€ TTC)</span>
+			</div>
+		</div>
+
+
+	</div>
+	<!-- fin div gauche -->
+
+
+
+	<!-- div droite -->
+	<div class="col-xs-6">
+
+		<!-- Stock -->
+		<div class="form-group">
+			<label for="input_stock" class="col-xs-5 control-label">Stock <span class="myred">*</span></label>
+			<div class="col-xs-5">
+				<input id="input_stock" ng-virtual-keyboard="{layout: 'alpha'}" ng-model="formUpdate.input_stock" ng-maxlength="3" maxlength="3" id="input_stock" class="form-control keyboard_fix_input" type="number" name="input_stock" required>
+			</div>
+			<div class="col-xs-1"><span ng-click="onKeyboardClick('input_stock')" class="ouvrir_clavier" for="input_stock"><img src="img/keyboard.png"></img></span></div>
+		</div>
+
+	
+
+	</div>
+	<!-- fin div droite -->
+
+	<div class="col-xs-12 text-center">
+		<button ng-disabled="creaForm.$invalid" id="save_stock" type="submit" class="btn btn-primary btn-sm">Submit the form</button>
+	</div>
+
+
+
+</form>
+
+
+
+
+
+
+
